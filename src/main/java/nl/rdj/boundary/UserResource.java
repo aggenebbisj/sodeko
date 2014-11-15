@@ -21,12 +21,12 @@ public class UserResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getUsers() throws IOException {
-        return Files.lines(Paths.get("./users.txt")).collect(Collectors.toList()).toString();
+        return Files.lines(Paths.get("/tmp/users.txt")).collect(Collectors.toList()).toString();
     }
     
     @POST
     public void addUser(User user) throws IOException {
-        Files.write(Paths.get("./users.txt"), Arrays.asList(user.getName()), CREATE, APPEND);
+        Files.write(Paths.get("/tmp/users.txt"), Arrays.asList(user.getName()), CREATE, APPEND);
         System.out.println("User added: " + user);
     }
 }
